@@ -1,1 +1,174 @@
-# README-aula
+# 🎓 UniBot — FAQ Acadêmico · CROF Base
+
+Chatbot de FAQ acadêmico para a empresa CROF Base, usando o modelo **Llama-3.1-8B-Instruct** (gratuito via HuggingFace Inference API) e interface em **Streamlit**.
+
+---
+
+## 📁 Estrutura do projeto
+
+
+```
+├── app.py                      # Aplicação principal
+├── faq_data.json               # Perguntas e respostas do FAQ (editável sem código)
+├── requirements.txt            # Dependências Python
+├── prompts/
+│   └── system_prompt.md        # Prompt do bot (editável sem código)
+├── styles/
+│   └── main.css                # Estilos da interface
+└── templates/
+    ├── header.html             # Cabeçalho da página
+    ├── message_user.html       # Balão de mensagem do usuário
+    ├── message_bot.html        # Balão de mensagem do bot
+    ├── typing.html             # Indicador de digitando...
+    └── suggestions.html        # Chips de sugestão iniciais
+```
+
+---
+
+## 🚀 Como rodar localmente
+
+### Usando python 3.11.9
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/otzjoao/Chatbot3.git
+cd Chatbot3
+```
+
+### 2. Crie um ambiente virtual (recomendado)
+
+```bash
+python -m venv venv
+```
+# adicione a venv no .gitignore!!!!!!!!!!
+
+### 3. Ative seu ambiente virtual
+```bash
+# Windows
+venv\Scripts\activate
+```
+
+```bash
+# Linux/Mac
+source venv/bin/activate
+```
+
+### 4. Instale as dependências
+
+```bash
+pip install -r requirements.txt
+```
+
+### 5. Obtenha seu token HuggingFace (gratuito) (para não-colaboradores)
+
+1. Acesse: https://huggingface.co/settings/tokens
+2. Clique em **"New token"**
+3. Escolha tipo **"Read"**
+4. Copie o token gerado (começa com `hf_...`)
+
+### 6. Esconda sua propria chave da API
+
+1. Crie a pasta: .streamlit/
+2. Dentro da pasta crie o arquivo: secrets.toml
+3. Dentro do arquivo coloque sua chave:
+   ```bash
+   HF_TOKEN = "hf_seu_token_aqui"
+   ```
+### 7. Esconda tudo no seu .gitignore
+
+```.gitignore
+#Diretórios
+venv
+.streamlit
+
+#Arquivos
+
+
+#Outros
+__pycache__/
+```
+
+### 8. Execute o app
+
+```bash
+streamlit run app.py
+```
+
+O browser abrirá automaticamente em `http://localhost:8501`.  
+Cole seu token no campo **🔑 Token HuggingFace** na barra lateral. (para não-colaboradores)
+
+---
+
+## 🌐 Deploy gratuito no Streamlit Cloud (para não-colaboradores)
+
+1. Acesse https://share.streamlit.io e conecte seu repositório GitHub
+2. Selecione `app.py` como arquivo principal
+3. Em **"Secrets"**, adicione:
+   ```toml
+   HF_TOKEN = "hf_seu_token_aqui"
+   ```
+4. Clique em **Deploy** — o token será lido automaticamente pelo app
+
+---
+
+## ✏️ Como personalizar sem mexer no código
+
+### Adicionar ou editar perguntas do FAQ → `faq_data.json`
+
+Cada entrada segue este formato:
+
+```json
+{
+  "palavras_chave": ["biblioteca", "livro", "empréstimo"],
+  "resposta": "📚 **Biblioteca**\n\nHorário: 7h–22h..."
+}
+```
+
+- **`palavras_chave`:** termos que ativam a resposta (acentos e maiúsculas são ignorados automaticamente)
+- **`resposta`:** texto exibido, suporta Markdown (`**negrito**`, `- listas`, tabelas)
+
+O arquivo pode ser editado diretamente pelo GitHub (clique no arquivo → ✏️ editar → salvar), sem precisar de editor de código.
+
+### Alterar o comportamento do bot → `prompts/system_prompt.md`
+
+Edite o texto para mudar o contexto, tom ou lista de assuntos que o bot responde.
+
+### Alterar a aparência → `styles/main.css`
+
+Edite cores, fontes e espaçamentos sem tocar no Python.
+
+---
+
+## 🤖 Modelo usado
+
+| Propriedade | Valor |
+|-------------|-------|
+| Modelo | meta-llama/Llama-3.1-8B-Instruct |
+| Parâmetros | 8 bilhões |
+| Custo | Gratuito (HF Inference API) |
+| Idioma | Português / Multilíngue |
+
+---
+
+## 🛡️ Segurança
+
+- Input do usuário é sanitizado com `html.escape()` antes de ser renderizado, prevenindo HTML injection
+- O token HuggingFace nunca é exposto no código — use sempre `st.secrets` no deploy
+
+---
+
+## 📌 Tecnologias
+
+- [Streamlit](https://streamlit.io) — Interface web
+- [HuggingFace Hub](https://huggingface.co) — API de inferência gratuita
+- [Llama 3.1](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct) — Modelo de linguagem
+
+## 👥 Contribuidores
+
+Projeto desenvolvido com a contribuição de:
+
+- Ryan Soler de Lima de Souza
+- João Victor dos Santos Ortiz
+- Franz Trefzger Neto
+- Caio Fábio Oliveira Tlaes
