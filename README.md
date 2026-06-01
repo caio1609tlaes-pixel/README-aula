@@ -169,6 +169,6 @@ Edite cores, fontes e espaçamentos sem tocar no Python.
 Projeto desenvolvido com a contribuição de:
 
 - Ryan Soler de Lima de Souza
-- João Victor dos Santos Ortiz
+- João Victor dos Santos Ortiz.
 - Franz Trefzger Neto
 - Caio Fábio Oliveira Tlaes
