@@ -21,6 +21,7 @@ Chatbot de FAQ acadêmico para a empresa CROF Base, usando o modelo **Llama-3.1-
     ├── message_bot.html        # Balão de mensagem do bot
     ├── typing.html             # Indicador de digitando...
     └── suggestions.html        # Chips de sugestão iniciais
+    
 ```
 
 ---
