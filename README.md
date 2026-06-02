@@ -149,6 +149,7 @@ Edite cores, fontes e espaçamentos sem tocar no Python.
 | Parâmetros | 8 bilhões |
 | Custo | Gratuito (HF Inference API) |
 | Idioma | Português / Multilíngue |
+| Banco de dados | abr/23
 
 ---
 
